@@ -1,0 +1,31 @@
+{
+  "secret-keys": [
+    {
+      "email": "alieukeita@gmail.com",
+      "role": "regular",
+      "secret": 3346,
+      "id": 1
+    },
+    {
+      "email": "alieukeita201@gmail.com",
+      "role": "regular",
+      "secret": 2848,
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "firstName": "Alieu",
+      "lastName": "Keita",
+      "gender": "male",
+      "programme": "Bsc CSE",
+      "password": "12345",
+      "confirm_password": "12345",
+      "admitted": "2018",
+      "graduation": "2023",
+      "email": "alieukeita201@gmail.com",
+      "secret": 2848,
+      "id": 1
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+import React from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+// import { checkRegister } from "../../actions/userAction";
+import Alert from "../layout/Alert";
+
+const RegisterCheck = ({ checkRegister, authReducer }) => {
+  const [user, setUser] = useState({
+    email: "",
+    secret: "",
+  });
+  const history = useHistory();
+
+  const [alert, setAlert] = useState({
+    type: null,
+    msg: null,
+  });
+
+  const clearAlert = () => {
+    setAlert({
+      type: null,
+      msg: null,
+    });
+  };
+
+  const checkFirst = async () => {
+    const res = await axios.get("secret-keys");
+    const secret_keys = res.data;
+    let found = false,
+      id = null;
+    if (secret_keys.length > 0) {
+      for (const key in secret_keys) {
+        if (
+          secret_keys[key].email === user.email &&
+          secret_keys[key].secret === Number(user.secret)
+        ) {
+          found = true;
+          id = secret_keys[key].id;
+          break;
+        }
+      }
+
+      if (found) {
+        return { found, id };
+      } else {
+        setAlert({ type: "danger", msg: "Wrong Secret or Email" });
+        return { found, id };
+      }
+    } else {
+      setAlert({ type: "danger", msg: "Sorry Only Members" });
+      return { found, id: null };
+    }
+  };
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const returned = checkFirst();
+    returned.then((res) => {
+      if (res.found) {
+        clearAlert();
+        history.replace(`/register/${res.id}`);
+      }
+    });
+  };
+  return (
+    <div className="container add-user py-3">
+      <div className="row ">
+        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+          <form onSubmit={(e) => handleSubmit(e)}>
+            {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
+            <div className="form-group">
+              <label htmlFor="add-user-email" className="my-3">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control d-block w-100"
+                id="add-user-email"
+                placeholder="Enter email"
+                value={user.email}
+                name="email"
+                onChange={(e) => handleChange(e)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="secret" className="my-3">
+                Your Secret
+              </label>
+              <input
+                type="text"
+                className="form-control d-block w-100"
+                id="secret"
+                placeholder="Enter Secret"
+                value={user.secret}
+                name="secret"
+                onChange={(e) => handleChange(e)}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-dark my-3 d-block w-100">
+              Next
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  authReducer: state.authReducer,
+});
+export default connect(mapStateToProps, {})(RegisterCheck);

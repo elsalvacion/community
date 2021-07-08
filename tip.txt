@@ -1,0 +1,26 @@
+  // const populateDob = () => {
+  //   const year = document.querySelector("#year");
+  //   const day = document.querySelector("#day");
+  //   const month = document.querySelector("month");
+  // };
+
+           {/* Date of Birth */}
+            {/* <div className="row">
+              Day
+              <div className="col">
+                <label htmlFor="day">Day</label>
+                <select class="form-select" id="day"></select>
+              </div>
+
+              Month
+              <div className="col">
+                <label htmlFor="month">Month</label>
+                <select class="form-select" id="month"></select>
+              </div>
+
+              Year
+              <div className="col">
+                <label htmlFor="year">Year</label>
+                <select class="form-select" id="year"></select>
+              </div>
+            </div> */}
