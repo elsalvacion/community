@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { loginUser } from "../../actions/userAction";
 import Alert from "../layout/Alert";
 const AddUser = ({ loginUser }) => {
@@ -76,6 +76,7 @@ const AddUser = ({ loginUser }) => {
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
+            <h1 className="h1 text-center mb-2">Login</h1>
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
             <div className="form-group">
               <label htmlFor="add-user-email" className="my-3">
@@ -108,6 +109,10 @@ const AddUser = ({ loginUser }) => {
                 required
               />
             </div>
+
+            <p className="monospace my-2">
+              New here? <Link to="/register-check">Register</Link>
+            </p>
 
             <button type="submit" className="btn btn-dark my-3 d-block w-100">
               Login

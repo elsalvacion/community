@@ -1,10 +1,4 @@
-import {
-  SET_ALERT,
-  REGISTER,
-  SET_LOADING,
-  CLEAR_ALERT,
-  LOGIN_USER,
-} from "./types";
+import { SET_LOADING, LOGIN_USER, LOGOUT, CHANGE_PASS } from "./types";
 
 const initialState = {
   loading: false,
@@ -35,6 +29,19 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
+        user: action.value,
+        loading: false,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        loading: false,
+      };
+    case CHANGE_PASS:
+      return {
+        ...state,
         user: action.value,
         loading: false,
       };

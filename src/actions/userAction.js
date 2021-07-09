@@ -1,10 +1,9 @@
 import axios from "axios";
 
 import {
+  CHANGE_PASS,
   LOGIN_USER,
   LOGOUT,
-  REGISTER,
-  SET_ALERT,
   SET_LOADING,
 } from "../reducers/types";
 
@@ -115,6 +114,7 @@ export const registerUser = (user, id) => async (dispatch) => {
     ...user,
     email: userSecret.email,
     secret: userSecret.secret,
+    role: userSecret.role,
   };
   await axios.post("/users", data, { "Content-Type": "application/json" });
   return true;
@@ -128,6 +128,30 @@ export const loginUser = (user) => async (dispatch) => {
   });
 };
 
+export const logoutUser = () => (dispatch) => {
+  setLoading();
+  dispatch({
+    type: LOGOUT,
+  });
+  return true;
+};
+
+export const changePassword = (pass, user) => async (dispatch) => {
+  const data = {
+    ...user,
+    password: pass.newPassword,
+    confirm_password: pass.confirmPassword,
+  };
+  dispatch({
+    type: CHANGE_PASS,
+    value: data,
+  });
+
+  await axios.put(`/users/${data.id}`, data, {
+    "Content-Type": "application/json",
+  });
+  return true;
+};
 // const setAlert = (dispatch, alert) => {
 //   dispatch({
 //     type: SET_ALERT,

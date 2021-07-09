@@ -9,35 +9,40 @@ import RegisterCheck from "./components/forms/RegisterCheck";
 import Register from "./components/forms/Register";
 import Login from "./components/forms/Login";
 import Profile from "./components/layout/Profile";
-import Home from "./components/layout/Home";
-
+import HomePrivate from "./components/private/HomePrivate";
+import ChangePass from "./components/forms/ChangePass";
 const App = () => {
   return (
-    <Provider store={store}>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/add-user">
-            <AddUser />
-          </Route>
-          <Route exact path="/register-check">
-            <RegisterCheck />
-          </Route>
-          <Route exact path="/register/:id">
-            <Register />
-          </Route>
-        </Switch>
-      </Router>
-    </Provider>
+    <div className="bg-light text-dark">
+      <Provider store={store}>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <HomePrivate />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/add-user">
+              <AddUser />
+            </Route>
+            <Route exact path="/register-check">
+              <RegisterCheck />
+            </Route>
+            <Route exact path="/register/:id">
+              <Register />
+            </Route>
+            <Route exact path="/change-password">
+              <ChangePass />
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
+    </div>
   );
 };
 

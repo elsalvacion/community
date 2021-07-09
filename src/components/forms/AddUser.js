@@ -108,6 +108,8 @@ const AddUser = ({ setLoading, authReducer }) => {
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
+            <h2 className="h2 text-center">Add User</h2>
+
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
 
             <div className="form-group">
@@ -130,7 +132,7 @@ const AddUser = ({ setLoading, authReducer }) => {
                 User Role
               </label>
               <select
-                className="form-select d-block w-100"
+                className="form-control d-block w-100"
                 id="role"
                 name="role"
                 value={user.role}

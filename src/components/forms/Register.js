@@ -17,6 +17,7 @@ const Register = ({ registerUser }) => {
     graduation: "",
     email: null,
     secret: null,
+    role: null,
   });
 
   const [alert, setAlert] = useState({
@@ -64,6 +65,8 @@ const Register = ({ registerUser }) => {
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
+            <h2 className="h2 text-center">Register</h2>
+
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
 
             {/* First Name */}

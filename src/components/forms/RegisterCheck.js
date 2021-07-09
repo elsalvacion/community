@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 // import { checkRegister } from "../../actions/userAction";
 import Alert from "../layout/Alert";
@@ -76,6 +76,10 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
+            <h1 className="h1 text-center mb-2">Register</h1>
+            <p className="monospace my-1">
+              Already got an account? <Link to="/login">Login</Link>
+            </p>
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
             <div className="form-group">
               <label htmlFor="add-user-email" className="my-3">
