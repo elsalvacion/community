@@ -103,18 +103,14 @@ const Treasury = () => {
             <td>{treasury.month}</td>
             <td
               className={
-                treasury.amount_status
-                  ? "bg-success text-light"
-                  : "bg-danger text-white"
+                treasury.amount_status ? "paid text-light" : "unpaid text-light"
               }
             >
               {treasury.amount}
             </td>
             <td
               className={
-                treasury.loan_status
-                  ? "bg-success text-light"
-                  : "bg-danger text-white"
+                treasury.loan_status ? "paid text-light" : "unpaid text-light"
               }
             >
               {treasury.loan}

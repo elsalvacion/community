@@ -72,7 +72,7 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
     });
   };
   return (
-    <div className="container add-user py-3">
+    <div className="container-fluid register py-3">
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -111,7 +111,10 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-dark my-3 d-block w-100">
+            <button
+              type="submit"
+              className="btn btn-dark my-3 d-block w-100 register-btn"
+            >
               Next
             </button>
           </form>

@@ -52,7 +52,7 @@ const ChangePass = ({ authReducer: { user }, changePassword }) => {
 
   if (user === null) return <Redirect to="/" />;
   return (
-    <div className="container add-pass py-3">
+    <div className="container-fluid change-pass py-3">
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -90,7 +90,10 @@ const ChangePass = ({ authReducer: { user }, changePassword }) => {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-dark my-3 d-block w-100">
+            <button
+              type="submit"
+              className="btn btn-dark my-3 d-block w-100 change-pass-btn"
+            >
               Login
             </button>
           </form>

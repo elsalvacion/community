@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import { setLoading } from "../../actions/userAction";
 import Alert from "../layout/Alert";
 
-const AddUser = ({ setLoading, authReducer }) => {
-  const [user, setUser] = useState({
+const AddUser = ({ setLoading, authReducer: { user, isAuthenticated } }) => {
+  const [usr, setUser] = useState({
     email: "",
     role: "regular",
   });
@@ -27,7 +28,7 @@ const AddUser = ({ setLoading, authReducer }) => {
     return Math.floor(1000 + Math.random() * 9000);
   };
 
-  const addUser = async () => {
+  const addUsr = async () => {
     setLoading();
 
     let secret = null;
@@ -42,7 +43,7 @@ const AddUser = ({ setLoading, authReducer }) => {
       while (true) {
         secret = generateRandom();
         for (const key in secret_keys) {
-          if (secret_keys[key].email === user.email) {
+          if (secret_keys[key].email === usr.email) {
             userExist = true;
             break;
           } else if (secret_keys[key].secret === secret) {
@@ -59,8 +60,8 @@ const AddUser = ({ setLoading, authReducer }) => {
         setAlert({ type: "danger", msg: "User Exist" });
       } else {
         const data = {
-          email: user.email,
-          role: user.role,
+          email: usr.email,
+          role: usr.role,
           secret,
         };
 
@@ -76,8 +77,8 @@ const AddUser = ({ setLoading, authReducer }) => {
     } else {
       secret = generateRandom();
       const data = {
-        email: user.email,
-        role: user.role,
+        email: usr.email,
+        role: usr.role,
         secret,
       };
 
@@ -101,10 +102,12 @@ const AddUser = ({ setLoading, authReducer }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUser(user);
+    addUsr(user);
   };
+
+  if (user === null && isAuthenticated === false) <Redirect to="/login" />;
   return (
-    <div className="container add-user py-3">
+    <div className="container-fluid add-user py-3">
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -121,7 +124,7 @@ const AddUser = ({ setLoading, authReducer }) => {
                 className="form-control d-block w-100"
                 id="add-user-email"
                 placeholder="Enter email"
-                value={user.email}
+                value={usr.email}
                 name="email"
                 onChange={(e) => handleChange(e)}
                 required
@@ -135,7 +138,7 @@ const AddUser = ({ setLoading, authReducer }) => {
                 className="form-control d-block w-100"
                 id="role"
                 name="role"
-                value={user.role}
+                value={usr.role}
                 onChange={(e) => handleChange(e)}
               >
                 <option value="regular">Regular</option>
@@ -143,7 +146,10 @@ const AddUser = ({ setLoading, authReducer }) => {
                 <option value="executive">Executive</option>
               </select>
             </div>
-            <button type="submit" className="btn btn-dark my-3 d-block w-100">
+            <button
+              type="submit"
+              className="btn btn-dark my-3 d-block w-100 add-user-btn"
+            >
               Add User
             </button>
           </form>
@@ -157,4 +163,4 @@ const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
 });
 
-export default connect(mapStateToProps, { setLoading })(AddUser);
+export default withRouter(connect(mapStateToProps, { setLoading })(AddUser));

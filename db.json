@@ -11,6 +11,12 @@
       "role": "regular",
       "secret": 2848,
       "id": 2
+    },
+    {
+      "email": "test@test.com",
+      "role": "regular",
+      "secret": 6592,
+      "id": 3
     }
   ],
   "users": [
@@ -18,14 +24,19 @@
       "firstName": "Alieu",
       "lastName": "Keita",
       "gender": "male",
-      "programme": "Bsc CSE",
-      "password": "123",
-      "confirm_password": "123",
+      "programme": "Bsc. EEE",
+      "password": "12345",
+      "confirm_password": "12345",
       "admitted": "2018",
-      "graduation": "2023",
-      "email": "alieukeita201@gmail.com",
-      "secret": 2848,
-      "id": 1
+      "graduation": "2020",
+      "whatsapp": "+8801858328387",
+      "emergency": "+2203480694",
+      "facebook": "https://www.facebook.com/alieu.keita.58",
+      "linkedin": "https://www.linkedin.com/in/alieukeita/",
+      "email": "alieukeita@gmail.com",
+      "secret": 3346,
+      "role": "executive",
+      "id": 3
     }
   ]
 }

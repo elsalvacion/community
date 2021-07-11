@@ -2,6 +2,7 @@ import axios from "axios";
 
 import {
   CHANGE_PASS,
+  GET_USER,
   LOGIN_USER,
   LOGOUT,
   SET_LOADING,
@@ -120,8 +121,22 @@ export const registerUser = (user, id) => async (dispatch) => {
   return true;
 };
 
+export const getUser = () => async (dispatch) => {
+  setLoading();
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
+  if (user) {
+    dispatch({
+      type: GET_USER,
+      value: user,
+    });
+  }
+};
+
 export const loginUser = (user) => async (dispatch) => {
   setLoading();
+  sessionStorage.setItem("user", JSON.stringify(user));
+
   dispatch({
     type: LOGIN_USER,
     value: user,
@@ -130,6 +145,7 @@ export const loginUser = (user) => async (dispatch) => {
 
 export const logoutUser = () => (dispatch) => {
   setLoading();
+  sessionStorage.removeItem("user");
   dispatch({
     type: LOGOUT,
   });

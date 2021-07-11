@@ -1,4 +1,10 @@
-import { SET_LOADING, LOGIN_USER, LOGOUT, CHANGE_PASS } from "./types";
+import {
+  SET_LOADING,
+  LOGIN_USER,
+  LOGOUT,
+  CHANGE_PASS,
+  GET_USER,
+} from "./types";
 
 const initialState = {
   loading: false,
@@ -26,6 +32,13 @@ const authReducer = (state = initialState, action) => {
       };
 
     case LOGIN_USER:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.value,
+        loading: false,
+      };
+    case GET_USER:
       return {
         ...state,
         isAuthenticated: true,

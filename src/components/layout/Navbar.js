@@ -1,16 +1,13 @@
 import React, { Fragment } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/userAction";
 const Navbar = ({ authReducer: { user }, logoutUser }) => {
   return (
-    <nav
-      className="navbar navbar-expand-sm navbar-dark bg-dark p-2"
-      id="navbar"
-    >
-      <Link className="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-sm navbar-dark my-nav p-2" id="navbar">
+      <NavLink className="navbar-brand" to="/">
         CMS
-      </Link>
+      </NavLink>
       <button
         className="navbar-toggler"
         type="button"
@@ -27,7 +24,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
           {user !== null ? (
             <Fragment>
               <li className="nav-item dropdown">
-                <Link
+                <NavLink
                   className="nav-link dropdown-toggle"
                   to="#"
                   id="drop-down"
@@ -36,35 +33,50 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                   aria-expanded="false"
                 >
                   <i className="material-icons">person</i>
-                </Link>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="drop-down"
-                >
+                </NavLink>
+                <ul className="dropdown-menu drp" aria-labelledby="drop-down">
                   <li className="nav-item">
-                    <Link className="dropdown-item" to="/profile">
-                      Profile
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="dropdown-item" to="/add-user">
-                      Add User
-                    </Link>
-                  </li>
-
-                  <li className="nav-item">
-                    <Link className="dropdown-item" to="/change-password">
-                      Change Password
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link
+                    <NavLink
+                      activeClassName="selected"
                       className="dropdown-item"
+                      exact
+                      to="/profile"
+                    >
+                      Profile
+                    </NavLink>
+                  </li>
+                  {user.role === "executive" && (
+                    <li className="nav-item">
+                      <NavLink
+                        activeClassName="selected"
+                        className="dropdown-item"
+                        exact
+                        to="/add-user"
+                      >
+                        Add User
+                      </NavLink>
+                    </li>
+                  )}
+                  <li className="nav-item">
+                    <NavLink
+                      activeClassName="selected"
+                      className="dropdown-item"
+                      exact
+                      to="/change-password"
+                    >
+                      Change Password
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      activeClassName="selected"
+                      className="dropdown-item"
+                      exact
                       to="/"
                       onClick={() => logoutUser()}
                     >
                       Logout
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </li>
@@ -74,14 +86,24 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
           ) : (
             <Fragment>
               <li className="nav-item">
-                <Link className="nav-link" to="/register-check">
+                <NavLink
+                  activeClassName="selected"
+                  className="nav-link"
+                  exact
+                  to="/register-check"
+                >
                   Register
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">
+                <NavLink
+                  activeClassName="selected"
+                  className="nav-link"
+                  exact
+                  to="/login"
+                >
                   Login
-                </Link>
+                </NavLink>
               </li>
             </Fragment>
           )}
@@ -94,4 +116,4 @@ const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
 });
 
-export default withRouter(connect(mapStateToProps, { logoutUser })(Navbar));
+export default connect(mapStateToProps, { logoutUser })(Navbar);

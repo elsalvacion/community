@@ -7,3 +7,5 @@ export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT = "LOGOUT";
 
 export const CHANGE_PASS = "CHANGE_PASS";
+
+export const GET_USER = "GET_USER";

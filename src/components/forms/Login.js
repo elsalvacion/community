@@ -1,12 +1,19 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
-import { loginUser } from "../../actions/userAction";
+import { useHistory, Link, Redirect, withRouter } from "react-router-dom";
+import { loginUser, getUser } from "../../actions/userAction";
 import Alert from "../layout/Alert";
-const AddUser = ({ loginUser }) => {
-  const [user, setUser] = useState({
+const AddUser = ({
+  authReducer: { isAuthenticated, user },
+  loginUser,
+  getUser,
+}) => {
+  useEffect(() => {
+    getUser();
+    //eslint-disable-next-line
+  }, []);
+  const [usr, setUser] = useState({
     email: "",
     password: "",
   });
@@ -25,7 +32,7 @@ const AddUser = ({ loginUser }) => {
 
   const handleChange = (e) => {
     setUser({
-      ...user,
+      ...usr,
       [e.target.name]: e.target.value,
     });
   };
@@ -40,8 +47,8 @@ const AddUser = ({ loginUser }) => {
     if (users.length > 0) {
       for (const key in users) {
         if (
-          user.password === users[key].password &&
-          user.email === users[key].email
+          usr.password === users[key].password &&
+          usr.email === users[key].email
         ) {
           found = true;
           current_user = users[key];
@@ -71,8 +78,10 @@ const AddUser = ({ loginUser }) => {
       }
     });
   };
-  return (
-    <div className="container add-user py-3">
+  return isAuthenticated && user !== null ? (
+    <Redirect to="/" />
+  ) : (
+    <div className="container-fluid login py-3">
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -87,7 +96,7 @@ const AddUser = ({ loginUser }) => {
                 className="form-control d-block w-100"
                 id="add-user-email"
                 placeholder="Enter email"
-                value={user.email}
+                value={usr.email}
                 name="email"
                 onChange={(e) => handleChange(e)}
                 required
@@ -103,7 +112,7 @@ const AddUser = ({ loginUser }) => {
                 className="form-control d-block w-100"
                 id="password"
                 placeholder="Enter Password"
-                value={user.password}
+                value={usr.password}
                 name="password"
                 onChange={(e) => handleChange(e)}
                 required
@@ -114,7 +123,10 @@ const AddUser = ({ loginUser }) => {
               New here? <Link to="/register-check">Register</Link>
             </p>
 
-            <button type="submit" className="btn btn-dark my-3 d-block w-100">
+            <button
+              type="submit"
+              className="btn btn-dark my-3 d-block w-100 login-btn"
+            >
               Login
             </button>
           </form>
@@ -128,4 +140,6 @@ const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
 });
 
-export default connect(mapStateToProps, { loginUser })(AddUser);
+export default withRouter(
+  connect(mapStateToProps, { loginUser, getUser })(AddUser)
+);
