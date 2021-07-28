@@ -11,6 +11,10 @@ import Login from "./components/forms/Login";
 import Profile from "./components/layout/Profile";
 import HomePrivate from "./components/private/HomePrivate";
 import ChangePass from "./components/forms/ChangePass";
+import UpdateDetails from "./components/forms/UpdateDetails";
+import AddPayment from "./components/forms/AddPayment";
+import MonthlyPayment from "./components/treasury/MonthlyPayment";
+import LoanPayment from "./components/treasury/LoanPayment";
 const App = () => {
   return (
     <div className="bg-light text-dark">
@@ -21,6 +25,21 @@ const App = () => {
             <Route exact path="/">
               <HomePrivate />
             </Route>
+
+            {/* Payment */}
+            <Route exact path="/payment">
+              <AddPayment />
+            </Route>
+
+            <Route exact path="/monthly">
+              <MonthlyPayment />
+            </Route>
+
+            <Route exact path="/loan">
+              <LoanPayment />
+            </Route>
+
+            {/* User */}
             <Route exact path="/profile">
               <Profile />
             </Route>
@@ -38,6 +57,9 @@ const App = () => {
             </Route>
             <Route exact path="/change-password">
               <ChangePass />
+            </Route>
+            <Route exact path="/update">
+              <UpdateDetails />
             </Route>
           </Switch>
         </Router>

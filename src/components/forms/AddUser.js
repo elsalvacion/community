@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "axios";
-import { setLoading } from "../../actions/userAction";
+// import axios from "axios";
+import { addUser } from "../../actions/userAction";
 import Alert from "../layout/Alert";
 
-const AddUser = ({ setLoading, authReducer: { user, isAuthenticated } }) => {
+const AddUser = ({  authReducer: { user, isAuthenticated }, addUser }) => {
   const [usr, setUser] = useState({
     email: "",
     role: "regular",
@@ -24,88 +23,30 @@ const AddUser = ({ setLoading, authReducer: { user, isAuthenticated } }) => {
     });
   };
 
-  const generateRandom = () => {
-    return Math.floor(1000 + Math.random() * 9000);
-  };
 
-  const addUsr = async () => {
-    setLoading();
-
-    let secret = null;
-
-    const getSecrets = await axios.get("/secret-keys");
-
-    const secret_keys = getSecrets.data;
-    let userExist = false,
-      keyExist = false;
-
-    if (secret_keys.length > 0) {
-      while (true) {
-        secret = generateRandom();
-        for (const key in secret_keys) {
-          if (secret_keys[key].email === usr.email) {
-            userExist = true;
-            break;
-          } else if (secret_keys[key].secret === secret) {
-            keyExist = true;
-            break;
-          }
-        }
-
-        if (keyExist && userExist === false) continue;
-        else break;
-      }
-
-      if (userExist) {
-        setAlert({ type: "danger", msg: "User Exist" });
-      } else {
-        const data = {
-          email: usr.email,
-          role: usr.role,
-          secret,
-        };
-
-        await axios.post("/secret-keys", data, {
-          "Content-Type": "application/json",
-        });
-
-        setAlert({
-          type: "success",
-          msg: `User Added, Secret: ${secret}`,
-        });
-      }
-    } else {
-      secret = generateRandom();
-      const data = {
-        email: usr.email,
-        role: usr.role,
-        secret,
-      };
-
-      await axios.post("/secret-keys", data, {
-        "Content-Type": "application/json",
-      });
-
-      setAlert({
-        type: "success",
-        msg: `User Added, Secret: ${secret}`,
-      });
-    }
-  };
 
   const handleChange = (e) => {
     setUser({
-      ...user,
+      ...usr,
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUsr(user);
+    const returned = addUser(usr);
+
+    returned.then(res => {
+      if(res.success && res.secret) {
+        setAlert({msg: `User added, secret: ${res.secret}`, type: 'success'})
+      }
+      else {
+        setAlert({msg: `User Exist`, type: 'danger'})
+      }
+    })
   };
 
-  if (user === null && isAuthenticated === false) <Redirect to="/login" />;
+  if (user === null && isAuthenticated === false) return  <Redirect to="/login" />;
   return (
     <div className="container-fluid add-user py-3">
       <div className="row ">
@@ -163,4 +104,4 @@ const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
 });
 
-export default withRouter(connect(mapStateToProps, { setLoading })(AddUser));
+export default withRouter(connect(mapStateToProps, { addUser })(AddUser));

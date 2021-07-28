@@ -1,94 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 
-const Treasury = () => {
-  const personTreasury = [
-    {
-      month: "Jan",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Feb",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Mar",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Apr",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "May",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "June",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "July",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Aug",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Sept",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Oct",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Nov",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-    {
-      month: "Dec",
-      amount: 100,
-      loan: 0,
-      amount_status: false,
-      loan_status: true,
-    },
-  ];
-
-  return (
+const Treasury = ({ personTreasury }) => {
+  return personTreasury ? (
     <table className="table">
       <thead>
         <tr>
@@ -119,6 +33,12 @@ const Treasury = () => {
         ))}
       </tbody>
     </table>
+  ) : (
+    <h3 className="text-center h3 mt-3">
+      {" "}
+      Treasury <br />
+      Loading...
+    </h3>
   );
 };
 

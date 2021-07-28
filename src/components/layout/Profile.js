@@ -1,11 +1,20 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect, withRouter, Link } from "react-router-dom";
 import defaultImg from "../../assets/default-picture.jpg";
 import Treasury from "../treasury/Treasury";
-const Profile = ({ authReducer: { user, loading } }) => {
+import { getTreasury } from "../../actions/treasuryAction";
+import { useEffect } from "react";
+const Profile = ({
+  authReducer: { user, loading, isAuthenticated },
+  treasuryReducer: { treasury },
+  getTreasury,
+}) => {
+  useEffect(() => {
+    user && getTreasury(user.secret);
+  }, []);
   if (loading) return <h2 className="text-center h2">Loading ...</h2>;
-  if (user === null) {
+  if (user === null && isAuthenticated === false) {
     return <Redirect to="/login" />;
   }
   return (
@@ -105,10 +114,16 @@ const Profile = ({ authReducer: { user, loading } }) => {
                       ]}
                   </h3>
                 </div>
+                <Link
+                  to="/update"
+                  className="btn btn-dark d-block mx-auto profile-btn text-center"
+                >
+                  Update
+                </Link>
               </div>
             </div>
             <div className="col-md-6 ">
-              <Treasury />
+              {treasury && <Treasury personTreasury={treasury} />}
             </div>
           </div>
         </Fragment>
@@ -119,6 +134,7 @@ const Profile = ({ authReducer: { user, loading } }) => {
 
 const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
+  treasuryReducer: state.treasuryReducer,
 });
 
-export default withRouter(connect(mapStateToProps, {})(Profile));
+export default withRouter(connect(mapStateToProps, { getTreasury })(Profile));

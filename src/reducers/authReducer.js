@@ -4,6 +4,7 @@ import {
   LOGOUT,
   CHANGE_PASS,
   GET_USER,
+  UPDATE_USER,
 } from "./types";
 
 const initialState = {
@@ -14,17 +15,7 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SET_ALERT:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     alert: action.value,
-    //   };
-    // case CLEAR_ALERT:
-    //   return {
-    //     ...state,
-    //     alert: null,
-    //   };
+
     case SET_LOADING:
       return {
         ...state,
@@ -39,6 +30,13 @@ const authReducer = (state = initialState, action) => {
         loading: false,
       };
     case GET_USER:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.value,
+        loading: false,
+      };
+      case UPDATE_USER:
       return {
         ...state,
         isAuthenticated: true,

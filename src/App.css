@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 /* Material Icons */
@@ -53,6 +54,19 @@ body,
 .change-pass,
 .profile-bg {
   background: #e8f5e9 !important;
+}
+
+.changeCursor {
+  cursor: pointer;
+}
+.btn-addPayment {
+  background: #00796b;
+}
+.btn-addPayment:hover {
+  background: #009688;
+}
+.btn-addPayment:active {
+  background: #009688;
 }
 
 .profile {
@@ -140,4 +154,8 @@ button {
 
 .paid {
   background: #00897b;
+}
+
+.change-to-cursor {
+  cursor: pointer;
 }

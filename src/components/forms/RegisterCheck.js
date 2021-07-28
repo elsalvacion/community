@@ -2,8 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import axios from "axios";
-// import { checkRegister } from "../../actions/userAction";
+// import axios from "axios";
+import { checkRegister } from "../../actions/userAction";
 import Alert from "../layout/Alert";
 
 const RegisterCheck = ({ checkRegister, authReducer }) => {
@@ -25,35 +25,6 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
     });
   };
 
-  const checkFirst = async () => {
-    const res = await axios.get("secret-keys");
-    const secret_keys = res.data;
-    let found = false,
-      id = null;
-    if (secret_keys.length > 0) {
-      for (const key in secret_keys) {
-        if (
-          secret_keys[key].email === user.email &&
-          secret_keys[key].secret === Number(user.secret)
-        ) {
-          found = true;
-          id = secret_keys[key].id;
-          break;
-        }
-      }
-
-      if (found) {
-        return { found, id };
-      } else {
-        setAlert({ type: "danger", msg: "Wrong Secret or Email" });
-        return { found, id };
-      }
-    } else {
-      setAlert({ type: "danger", msg: "Sorry Only Members" });
-      return { found, id: null };
-    }
-  };
-
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -63,8 +34,11 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const returned = checkFirst();
+    const returned = checkRegister(user);
     returned.then((res) => {
+      if (res.found === false) {
+        setAlert({ type: "danger", msg: "Wrong Secret or Email" });
+      }
       if (res.found) {
         clearAlert();
         history.replace(`/register/${res.id}`);
@@ -127,4 +101,4 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
 const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
 });
-export default connect(mapStateToProps, {})(RegisterCheck);
+export default connect(mapStateToProps, { checkRegister })(RegisterCheck);

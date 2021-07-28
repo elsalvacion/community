@@ -57,6 +57,30 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                       </NavLink>
                     </li>
                   )}
+                  {user.role === "treasurer" && (
+                    <Fragment>
+                      <li className="nav-item">
+                        <NavLink
+                          activeClassName="selected"
+                          className="dropdown-item"
+                          exact
+                          to="/monthly"
+                        >
+                          Contributions
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          activeClassName="selected"
+                          className="dropdown-item"
+                          exact
+                          to="/loan"
+                        >
+                          Loan
+                        </NavLink>
+                      </li>
+                    </Fragment>
+                  )}
                   <li className="nav-item">
                     <NavLink
                       activeClassName="selected"
@@ -80,8 +104,6 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                   </li>
                 </ul>
               </li>
-
-              {/* Drop down */}
             </Fragment>
           ) : (
             <Fragment>
