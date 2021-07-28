@@ -159,3 +159,8 @@ button {
 .change-to-cursor {
   cursor: pointer;
 }
+
+.back {
+  color: #00796b;
+  font-size: 24px;
+}

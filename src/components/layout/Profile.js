@@ -12,6 +12,7 @@ const Profile = ({
 }) => {
   useEffect(() => {
     user && getTreasury(user.secret);
+    // eslint-disable-next-line
   }, []);
   if (loading) return <h2 className="text-center h2">Loading ...</h2>;
   if (user === null && isAuthenticated === false) {

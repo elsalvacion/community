@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
 
 const Treasury = ({ personTreasury }) => {
   return personTreasury ? (

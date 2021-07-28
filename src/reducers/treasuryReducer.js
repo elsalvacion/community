@@ -12,6 +12,7 @@ const treasuryReducer = (state = initialState, action) => {
       return {
         ...state,
         treasury: action.payload,
+        loading: false,
       };
     case SET_LOADING:
       return {

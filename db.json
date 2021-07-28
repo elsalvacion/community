@@ -6,14 +6,14 @@
           "month": "Jan",
           "amount": 100,
           "amount_status": false,
-          "loan": 2563,
+          "loan": 1563,
           "loan_status": true
         },
         {
           "month": "Feb",
           "amount": 100,
           "amount_status": false,
-          "loan": 250,
+          "loan": 30,
           "loan_status": true
         },
         {
@@ -27,7 +27,7 @@
           "month": "Apr",
           "amount": 100,
           "amount_status": true,
-          "loan": 250,
+          "loan": 100,
           "loan_status": true
         },
         {
@@ -55,7 +55,7 @@
           "month": "Aug",
           "amount": 100,
           "amount_status": false,
-          "loan": 400,
+          "loan": 0,
           "loan_status": false
         },
         {
@@ -185,44 +185,32 @@
         {
           "month": "Jan",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "Feb",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "Mar",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "Apr",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "May",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "June",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "July",
@@ -248,9 +236,7 @@
         {
           "month": "Oct",
           "amount": 100,
-          "amount_status": false,
-          "loan": 0,
-          "loan_status": true
+          "amount_status": true
         },
         {
           "month": "Nov",
@@ -267,7 +253,7 @@
           "loan_status": true
         }
       ],
-      "secret": 1369,
+      "secret": "1369",
       "id": 3
     }
   ],

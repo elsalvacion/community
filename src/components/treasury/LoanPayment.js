@@ -112,10 +112,24 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
     }
   };
 
+  const goBack = () => {
+    clearAlert();
+    setPay(null);
+    setConfirm({
+      next: false,
+      secret: "",
+    });
+  };
+
   if (user === null && isAuthenticated === false)
     return <Redirect to="/login" />;
   return (
-    <div className="container-fluid login py-3">
+    <div className="container-fluid login py-1">
+      {confirm.next && (
+        <div className="p-2" onClick={() => goBack()}>
+          <i className="fas fa-arrow-left back change-to-cursor "></i>
+        </div>
+      )}
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           {confirm.next ? (
@@ -203,6 +217,7 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
                       className="close"
                       data-dismiss="modal"
                       aria-label="Close"
+                      onClick={() => clearAlert()}
                     >
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -248,6 +263,7 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
                       type="button"
                       className="btn btn-addPayment text-light"
                       data-dismiss="modal"
+                      onClick={() => clearAlert()}
                     >
                       Close
                     </button>

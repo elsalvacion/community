@@ -40,6 +40,7 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
   const checkSecret = async (e) => {
     e.preventDefault();
     let found = false;
+
     if (confirm.secret === "") {
       setAlert({
         type: "danger",
@@ -94,8 +95,9 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
 
   const getMonthlyContribution = async () => {
     const res = await axios.get("/treasury");
+
     res.data.forEach((treasury) => {
-      if (treasury.secret === Number(confirm.secret)) {
+      if (treasury.secret === confirm.secret) {
         setPay(treasury);
       }
     });
@@ -121,10 +123,23 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
     }
   };
 
+  const goBack = () => {
+    clearAlert();
+    setPay(null);
+    setConfirm({
+      next: false,
+      secret: "",
+    });
+  };
   if (user === null && isAuthenticated === false)
     return <Redirect to="/login" />;
   return (
-    <div className="container-fluid login py-3">
+    <div className="container-fluid login py-1">
+      {confirm.next && (
+        <div className="p-2" onClick={() => goBack()}>
+          <i className="fas fa-arrow-left back change-to-cursor "></i>
+        </div>
+      )}
       <div className="row ">
         <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
           {confirm.next ? (

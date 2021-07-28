@@ -12,7 +12,6 @@ import Profile from "./components/layout/Profile";
 import HomePrivate from "./components/private/HomePrivate";
 import ChangePass from "./components/forms/ChangePass";
 import UpdateDetails from "./components/forms/UpdateDetails";
-import AddPayment from "./components/forms/AddPayment";
 import MonthlyPayment from "./components/treasury/MonthlyPayment";
 import LoanPayment from "./components/treasury/LoanPayment";
 const App = () => {
@@ -24,11 +23,6 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <HomePrivate />
-            </Route>
-
-            {/* Payment */}
-            <Route exact path="/payment">
-              <AddPayment />
             </Route>
 
             <Route exact path="/monthly">

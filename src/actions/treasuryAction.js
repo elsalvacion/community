@@ -1,21 +1,17 @@
 import axios from "axios";
-import {
-  SET_LOADING,
-  SET_CURRENT_LOAN,
-  CHANGE_CURRENT_LOAN,
-  GET_TREASURY,
-} from "../reducers/types";
+import { SET_LOADING, GET_TREASURY } from "../reducers/types";
 
 export const getTreasury = (secret) => async (dispatch) => {
   setLoading();
   const res = await axios.get(`/treasury`);
   let treasury = res.data;
+  console.log(treasury, secret);
   treasury = treasury.filter((data) => {
-    if (data.secret === secret) {
+    if (Number(data.secret) === secret) {
       return data.months;
     }
+    return null;
   });
-  console.log(secret, treasury);
   dispatch({
     type: GET_TREASURY,
     payload: treasury[0].months,
