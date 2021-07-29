@@ -14,51 +14,55 @@ import ChangePass from "./components/forms/ChangePass";
 import UpdateDetails from "./components/forms/UpdateDetails";
 import MonthlyPayment from "./components/treasury/MonthlyPayment";
 import LoanPayment from "./components/treasury/LoanPayment";
+import SideNav from "./components/layout/SideNav";
+import { useEffect } from "react";
 const App = () => {
   return (
-    <div className="bg-light text-dark">
-      <Provider store={store}>
-        <Router>
+    <Provider store={store}>
+      <Router>
+        <div className="mb-3">
           <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <HomePrivate />
-            </Route>
+        </div>
+        <SideNav />
 
-            <Route exact path="/monthly">
-              <MonthlyPayment />
-            </Route>
+        <Switch>
+          <Route exact path="/">
+            <HomePrivate />
+          </Route>
 
-            <Route exact path="/loan">
-              <LoanPayment />
-            </Route>
+          <Route exact path="/monthly">
+            <MonthlyPayment />
+          </Route>
 
-            {/* User */}
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/add-user">
-              <AddUser />
-            </Route>
-            <Route exact path="/register-check">
-              <RegisterCheck />
-            </Route>
-            <Route exact path="/register/:id">
-              <Register />
-            </Route>
-            <Route exact path="/change-password">
-              <ChangePass />
-            </Route>
-            <Route exact path="/update">
-              <UpdateDetails />
-            </Route>
-          </Switch>
-        </Router>
-      </Provider>
-    </div>
+          <Route exact path="/loan">
+            <LoanPayment />
+          </Route>
+
+          {/* User */}
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/add-user">
+            <AddUser />
+          </Route>
+          <Route exact path="/register-check">
+            <RegisterCheck />
+          </Route>
+          <Route exact path="/register/:id">
+            <Register />
+          </Route>
+          <Route exact path="/change-password">
+            <ChangePass />
+          </Route>
+          <Route exact path="/update">
+            <UpdateDetails />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   );
 };
 

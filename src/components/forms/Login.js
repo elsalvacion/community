@@ -83,7 +83,7 @@ const AddUser = ({
   ) : (
     <div className="container-fluid login py-3">
       <div className="row ">
-        <div className="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
+        <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h1 className="h1 text-center mb-2">Login</h1>
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}

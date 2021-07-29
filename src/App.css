@@ -47,18 +47,14 @@
 
 /* Personal Styles */
 
-body,
-.login,
-.register,
-.add-user,
-.change-pass,
-.profile-bg {
-  background: #e8f5e9 !important;
+body {
+  background: #f5f5f5;
+}
+.container-fluid,
+.container {
+  background: #f5f5f5 !important;
 }
 
-.changeCursor {
-  cursor: pointer;
-}
 .btn-addPayment {
   background: #00796b;
 }
@@ -70,13 +66,13 @@ body,
 }
 
 .profile {
-  height: 300px;
-  width: 300px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
 }
 
 .profile-btn {
-  width: 300px;
+  width: 150px;
   background: #00796b;
 }
 
@@ -146,6 +142,69 @@ body,
 .my-nav,
 button {
   background: #009688;
+}
+
+/* side nav */
+
+.sidenav {
+  display: flex !important;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #015e54;
+  text-align: left;
+  padding: 10px;
+  transform: translateX(-200px);
+  transition: transform 0.2s ease;
+}
+
+.sidenav.show {
+  transform: translateX(0);
+}
+
+.sidenav .closeSidenav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.navbar-toggler:focus {
+  outline: 0;
+  box-shadow: 2px 2px 10px #00796b;
+}
+.sidenav .closeSidenav:hover {
+  background: #00796b;
+}
+.sidenav .closeSidenav:focus {
+  outline: 0;
+}
+.sidenav ul {
+  width: 100%;
+}
+.sidenav a {
+  color: white;
+  width: 100%;
+  font-size: 18px !important;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.sidenav a:hover {
+  font-size: 20px !important;
+}
+
+.sidenav a.selected {
+  color: #f4f4f4;
 }
 
 .unpaid {

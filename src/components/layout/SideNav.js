@@ -2,26 +2,40 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/userAction";
-const Navbar = ({ authReducer: { user }, logoutUser }) => {
+import { useEffect } from "react";
+const SideNav = ({ authReducer: { user }, logoutUser }) => {
+  //   useEffect(() => {
+  //     const sidenav = document.getElementById("sidenav");
+  //     if (sidenav.classList.contains("show")) {
+  //       document.addEventListener("click", (e) => {
+  //         if (!e.target.classList.contains("navbar-toggler")) {
+  //           if (!sidenav.contains(e.target)) {
+  //             sidenav.classList.remove("show");
+  //             console.log("click");
+  //           }
+  //         }
+  //       });
+  //     }
+  //   });
+
+  const closeOnClick = (e) => {
+    const sidenav = document.getElementById("sidenav");
+    sidenav.classList.remove("show");
+  };
   return (
-    <nav className="navbar navbar-expand-md navbar-dark my-nav" id="navbar">
-      <NavLink className="navbar-brand" to="/">
-        CMS
-      </NavLink>
+    <div className="d-md-none sidenav" id="sidenav">
       <button
-        className="navbar-toggler"
-        type="button"
-        onClick={(e) =>
-          document.getElementById("sidenav").classList.toggle("show")
-        }
+        className="closeSidenav"
+        onClick={(e) => e.target.parentElement.classList.toggle("show")}
       >
-        <span className="navbar-toggler-icon"></span>
+        X
       </button>
-      <ul className="navbar-nav ml-auto d-none d-md-flex">
+      <ul className="navbar-nav">
         {user !== null ? (
           <Fragment>
             <li className="nav-item">
               <NavLink
+                onClick={(e) => closeOnClick(e)}
                 activeClassName="selected"
                 className="nav-link"
                 exact
@@ -33,6 +47,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
             {user.role === "executive" && (
               <li className="nav-item">
                 <NavLink
+                  onClick={(e) => closeOnClick(e)}
                   activeClassName="selected"
                   className="nav-link"
                   exact
@@ -46,6 +61,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
               <Fragment>
                 <li className="nav-item">
                   <NavLink
+                    onClick={(e) => closeOnClick(e)}
                     activeClassName="selected"
                     className="nav-link"
                     exact
@@ -56,6 +72,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                 </li>
                 <li className="nav-item">
                   <NavLink
+                    onClick={(e) => closeOnClick(e)}
                     activeClassName="selected"
                     className="nav-link"
                     exact
@@ -68,6 +85,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
             )}
             <li className="nav-item">
               <NavLink
+                onClick={(e) => closeOnClick(e)}
                 activeClassName="selected"
                 className="nav-link"
                 exact
@@ -82,7 +100,10 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                 className="nav-link"
                 exact
                 to="/"
-                onClick={() => logoutUser()}
+                onClick={(e) => {
+                  closeOnClick(e);
+                  logoutUser();
+                }}
               >
                 Logout
               </NavLink>
@@ -92,6 +113,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
           <Fragment>
             <li className="nav-item">
               <NavLink
+                onClick={(e) => closeOnClick(e)}
                 activeClassName="selected"
                 className="nav-link"
                 exact
@@ -102,6 +124,7 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
             </li>
             <li className="nav-item">
               <NavLink
+                onClick={(e) => closeOnClick(e)}
                 activeClassName="selected"
                 className="nav-link"
                 exact
@@ -113,11 +136,12 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
           </Fragment>
         )}
       </ul>
-    </nav>
+    </div>
   );
 };
+
 const mapStateToProps = (state) => ({
   authReducer: state.authReducer,
 });
 
-export default connect(mapStateToProps, { logoutUser })(Navbar);
+export default connect(mapStateToProps, { logoutUser })(SideNav);

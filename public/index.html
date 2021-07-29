@@ -92,7 +92,17 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {});
+      const sidenav = document.getElementById("sidenav");
+      if (sidenav.classList.contains("show")) {
+        document.addEventListener("click", (e) => {
+          if (!e.target.classList.contains("navbar-toggler")) {
+            if (!sidenav.contains(e.target)) {
+              sidenav.classList.remove("show");
+              console.log("click");
+            }
+          }
+        });
+      }
     </script>
   </body>
 </html>
