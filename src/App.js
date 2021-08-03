@@ -16,6 +16,8 @@ import MonthlyPayment from "./components/treasury/MonthlyPayment";
 import LoanPayment from "./components/treasury/LoanPayment";
 import SideNav from "./components/layout/SideNav";
 import { useEffect } from "react";
+import AllUsers from "./components/auth/AllUsers";
+import CurrentProfile from "./components/layout/CurrentProfile";
 const App = () => {
   return (
     <Provider store={store}>
@@ -42,11 +44,17 @@ const App = () => {
           <Route exact path="/profile">
             <Profile />
           </Route>
+          <Route exact path="/profile/:id">
+            <CurrentProfile />
+          </Route>
           <Route exact path="/login">
             <Login />
           </Route>
           <Route exact path="/add-user">
             <AddUser />
+          </Route>
+          <Route exact path="/all-users">
+            <AllUsers />
           </Route>
           <Route exact path="/register-check">
             <RegisterCheck />

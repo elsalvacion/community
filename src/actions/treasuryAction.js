@@ -5,7 +5,6 @@ export const getTreasury = (secret) => async (dispatch) => {
   setLoading();
   const res = await axios.get(`/treasury`);
   let treasury = res.data;
-  console.log(treasury, secret);
   treasury = treasury.filter((data) => {
     if (Number(data.secret) === secret) {
       return data.months;

@@ -7,6 +7,9 @@ import {
   LOGOUT,
   SET_LOADING,
   UPDATE_USER,
+  GET_ALL_USERS,
+  FILTER_USERS,
+  DELETE_USER,
 } from "../reducers/types";
 
 const monthlyFields = {
@@ -171,6 +174,58 @@ export const addUser = (user) => async (dispatch) => {
   }
 };
 
+export const getAllUser = () => async (dispatch) => {
+  setLoading();
+  const res = await axios.get("/users");
+  dispatch({
+    type: GET_ALL_USERS,
+    value: res.data,
+  });
+};
+
+export const filterUsers = (text) => async (dispatch) => {
+  setLoading();
+  const usersResponse = await axios.get("/users");
+  const usersData = usersResponse.data;
+  if (text === "") {
+    dispatch({
+      type: FILTER_USERS,
+      value: null,
+    });
+  } else {
+    const filtered = usersData.filter((user) => {
+      if (
+        String(user.firstName + " " + user.lastName)
+          .toLowerCase()
+          .includes(text.toLowerCase()) ||
+        String(user.role).toLowerCase().includes(text.toLowerCase()) ||
+        String(user.programme).toLowerCase().includes(text.toLowerCase())
+      ) {
+        return user;
+      }
+      return null;
+    });
+    dispatch({
+      type: FILTER_USERS,
+      value: filtered,
+    });
+  }
+};
+
+export const deleteUser = (u) => async (dispatch) => {
+  setLoading();
+  await axios.delete(`/users/${u.id}`);
+  const usersResponse = await axios.get("/users");
+  const usersData = usersResponse.data;
+
+  dispatch({
+    type: DELETE_USER,
+    value: {
+      deleted: u,
+      allUsers: usersData,
+    },
+  });
+};
 export const checkRegister = (user) => async (dispatch) => {
   const res = await axios.get("/secret-keys");
   const secret_keys = res.data;
@@ -277,21 +332,7 @@ export const changePassword = (pass, user) => async (dispatch) => {
   });
   return true;
 };
-// const setAlert = (dispatch, alert) => {
-//   dispatch({
-//     type: SET_ALERT,
-//     value: {
-//       type: alert.type,
-//       msg: alert.msg,
-//     },
-//   });
-// };
 
-// export const clearAlert = () => (dispatch) => {
-//   dispatch({
-//     type: CLEAR_ALERT,
-//   });
-// };
 export const setLoading = () => (dispatch) => {
   dispatch({
     type: SET_LOADING,

@@ -150,8 +150,8 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
                         <td
                           className={
                             treasury.loan <= 0
-                              ? "unpaid text-light changeCursor"
-                              : "paid text-light changeCursor"
+                              ? "paid text-light change-to-cursor"
+                              : "unpaid text-light change-to-cursor"
                           }
                           data-toggle="modal"
                           data-target="#changeLoan"

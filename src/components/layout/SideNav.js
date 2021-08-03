@@ -2,22 +2,7 @@ import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/userAction";
-import { useEffect } from "react";
 const SideNav = ({ authReducer: { user }, logoutUser }) => {
-  //   useEffect(() => {
-  //     const sidenav = document.getElementById("sidenav");
-  //     if (sidenav.classList.contains("show")) {
-  //       document.addEventListener("click", (e) => {
-  //         if (!e.target.classList.contains("navbar-toggler")) {
-  //           if (!sidenav.contains(e.target)) {
-  //             sidenav.classList.remove("show");
-  //             console.log("click");
-  //           }
-  //         }
-  //       });
-  //     }
-  //   });
-
   const closeOnClick = (e) => {
     const sidenav = document.getElementById("sidenav");
     sidenav.classList.remove("show");
@@ -45,17 +30,31 @@ const SideNav = ({ authReducer: { user }, logoutUser }) => {
               </NavLink>
             </li>
             {user.role === "executive" && (
-              <li className="nav-item">
-                <NavLink
-                  onClick={(e) => closeOnClick(e)}
-                  activeClassName="selected"
-                  className="nav-link"
-                  exact
-                  to="/add-user"
-                >
-                  Add User
-                </NavLink>
-              </li>
+              <Fragment>
+                <li className="nav-item">
+                  <NavLink
+                    onClick={(e) => closeOnClick(e)}
+                    activeClassName="selected"
+                    className="nav-link"
+                    exact
+                    to="/add-user"
+                  >
+                    Add User
+                  </NavLink>
+                </li>
+
+                <li className="nav-item">
+                  <NavLink
+                    onClick={(e) => closeOnClick(e)}
+                    activeClassName="selected"
+                    className="nav-link"
+                    exact
+                    to="/all-users"
+                  >
+                    All Users
+                  </NavLink>
+                </li>
+              </Fragment>
             )}
             {user.role === "treasurer" && (
               <Fragment>
