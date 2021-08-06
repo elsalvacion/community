@@ -43,16 +43,6 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                   </NavLink>
                 </li>
                 {/*  All users */}
-                <li className="nav-item">
-                  <NavLink
-                    activeClassName="selected"
-                    className="nav-link"
-                    exact
-                    to="/all-users"
-                  >
-                    All Users
-                  </NavLink>
-                </li>
               </Fragment>
             )}
             {user.role === "treasurer" && (
@@ -79,6 +69,19 @@ const Navbar = ({ authReducer: { user }, logoutUser }) => {
                 </li>
               </Fragment>
             )}
+
+            {user.role === "executive" || user.role === "treasurer" ? (
+              <li className="nav-item">
+                <NavLink
+                  activeClassName="selected"
+                  className="nav-link"
+                  exact
+                  to="/all-users"
+                >
+                  All Users
+                </NavLink>
+              </li>
+            ) : null}
             <li className="nav-item">
               <NavLink
                 activeClassName="selected"

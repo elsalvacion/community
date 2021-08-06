@@ -42,18 +42,6 @@ const SideNav = ({ authReducer: { user }, logoutUser }) => {
                     Add User
                   </NavLink>
                 </li>
-
-                <li className="nav-item">
-                  <NavLink
-                    onClick={(e) => closeOnClick(e)}
-                    activeClassName="selected"
-                    className="nav-link"
-                    exact
-                    to="/all-users"
-                  >
-                    All Users
-                  </NavLink>
-                </li>
               </Fragment>
             )}
             {user.role === "treasurer" && (
@@ -82,6 +70,20 @@ const SideNav = ({ authReducer: { user }, logoutUser }) => {
                 </li>
               </Fragment>
             )}
+
+            {user.role === "executive" || user.role === "treasurer" ? (
+              <li className="nav-item">
+                <NavLink
+                  onClick={(e) => closeOnClick(e)}
+                  activeClassName="selected"
+                  className="nav-link"
+                  exact
+                  to="/all-users"
+                >
+                  All Users
+                </NavLink>
+              </li>
+            ) : null}
             <li className="nav-item">
               <NavLink
                 onClick={(e) => closeOnClick(e)}

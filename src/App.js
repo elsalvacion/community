@@ -18,6 +18,8 @@ import SideNav from "./components/layout/SideNav";
 import { useEffect } from "react";
 import AllUsers from "./components/auth/AllUsers";
 import CurrentProfile from "./components/layout/CurrentProfile";
+import SelectedProfile from "./components/layout/SelectedProfile";
+import UpdateSelectedUser from "./components/forms/UpdateSelectedUser";
 const App = () => {
   return (
     <Provider store={store}>
@@ -47,6 +49,9 @@ const App = () => {
           <Route exact path="/profile/:id">
             <CurrentProfile />
           </Route>
+          <Route exact path="/selecteduser/:id">
+            <SelectedProfile />
+          </Route>
           <Route exact path="/login">
             <Login />
           </Route>
@@ -67,6 +72,9 @@ const App = () => {
           </Route>
           <Route exact path="/update">
             <UpdateDetails />
+          </Route>
+          <Route exact path="/update-selected-user">
+            <UpdateSelectedUser />
           </Route>
         </Switch>
       </Router>

@@ -1,30 +1,42 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Redirect, withRouter, Link } from "react-router-dom";
+import {
+  Redirect,
+  withRouter,
+  Link,
+  useParams,
+  useHistory,
+} from "react-router-dom";
 import defaultImg from "../../assets/default-picture.jpg";
 import Treasury from "../treasury/Treasury";
-import { getTreasury } from "../../actions/treasuryAction";
+
 import { useEffect } from "react";
-const Profile = ({
-  authReducer: { user, loading, isAuthenticated },
-  treasuryReducer: { treasury },
-  getTreasury,
+import { getSelectedUser } from "../../actions/userAction";
+const SelectedProfile = ({
+  authReducer: { user, loading, isAuthenticated, selectedUser },
+  treasuryReducer: { currentTreasury },
+  getSelectedUser,
 }) => {
+  const { id } = useParams();
   useEffect(() => {
-    user && getTreasury(user.secret);
+    getSelectedUser(id);
     // eslint-disable-next-line
   }, []);
 
+  const history = useHistory();
   if (loading) return <h2 className="text-center h2">Loading ...</h2>;
-
   if (user === null && isAuthenticated === false) {
     return <Redirect to="/login" />;
   }
-
   return (
     <div className="container-fluid profile-bg">
-      {user && (
+      {selectedUser && (
         <Fragment>
+          <div className="row">
+            <div className="p-2" onClick={() => history.push("/all-users")}>
+              <i className="fas fa-arrow-left back change-to-cursor "></i>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-4 bg-dark card text-light">
               <div className="card-body">
@@ -32,7 +44,7 @@ const Profile = ({
                   <img
                     src={defaultImg}
                     className="mx-auto d-block my-2 profile"
-                    alt={`${user.firstName} ${user.lastName}`}
+                    alt={`${selectedUser.user.firstName} ${selectedUser.user.lastName}`}
                   />
                 </div>
                 <button className="btn btn-dark d-block mx-auto profile-btn text-center mb-3">
@@ -42,28 +54,32 @@ const Profile = ({
                   {/* Secret */}
                   <div className="row">
                     <p className=" monospace border-btm w-100">
-                      <b>Secret:</b> {" " + user.secret}
+                      <b>Secret:</b> {" " + selectedUser.user.secret}
                     </p>
                   </div>
 
                   {/* Name */}
                   <div className="row">
                     <p className=" monospace border-btm w-100">
-                      <b>Name:</b> {" " + user.firstName + " " + user.lastName}
+                      <b>Name:</b>{" "}
+                      {" " +
+                        selectedUser.user.firstName +
+                        " " +
+                        selectedUser.user.lastName}
                     </p>
                   </div>
 
                   {/* Programme */}
                   <div className="row">
                     <p className=" monospace border-btm w-100">
-                      <b>Programme:</b> {" " + user.programme}
+                      <b>Programme:</b> {" " + selectedUser.user.programme}
                     </p>
                   </div>
 
                   {/* Admitted */}
                   <div className="row">
                     <p className=" monospace border-btm w-100">
-                      <b>Admission Year:</b> {" " + user.admitted}
+                      <b>Admission Year:</b> {" " + selectedUser.user.admitted}
                     </p>
                   </div>
 
@@ -71,26 +87,27 @@ const Profile = ({
                   <div className="row">
                     <p className=" monospace border-btm w-100">
                       <b>
-                        {new Date().getFullYear() < Number(user.graduation)
+                        {new Date().getFullYear() <
+                        Number(selectedUser.user.graduation)
                           ? "Expected Graduation"
                           : "Graduation"}{" "}
                         Year:
                       </b>{" "}
-                      {" " + user.graduation}
+                      {" " + selectedUser.user.graduation}
                     </p>
                   </div>
 
                   {/* WhatsApp */}
                   <div className="row">
                     <p className=" monospace border-btm w-100">
-                      <b>WhatsApp:</b> {" " + user.whatsapp}
+                      <b>WhatsApp:</b> {" " + selectedUser.user.whatsapp}
                     </p>
                   </div>
 
                   {/* Emergency */}
                   <div className="row">
                     <p className=" monospace border-btm w-100">
-                      <b>Emergency:</b> {" " + user.emergency}
+                      <b>Emergency:</b> {" " + selectedUser.user.emergency}
                     </p>
                   </div>
 
@@ -99,10 +116,14 @@ const Profile = ({
                     <p className=" monospace border-btm w-100 align-items-center">
                       <b>Facebook</b>{" "}
                       {" " +
-                        String(user.facebook).split("/")[
-                          String(user.facebook).split("/").length - 1 === ""
-                            ? String(user.facebook).split("/").length - 2
-                            : String(user.facebook).split("/").length - 1
+                        String(selectedUser.user.facebook).split("/")[
+                          String(selectedUser.user.facebook).split("/").length -
+                            1 ===
+                          ""
+                            ? String(selectedUser.user.facebook).split("/")
+                                .length - 2
+                            : String(selectedUser.user.facebook).split("/")
+                                .length - 1
                         ]}
                     </p>
                   </div>
@@ -112,15 +133,19 @@ const Profile = ({
                     <p className=" monospace border-btm w-100 align-items-center">
                       <b>Linkedin</b>{" "}
                       {" " +
-                        String(user.linkedin).split("/")[
-                          String(user.linkedin).split("/").length - 1 === ""
-                            ? String(user.linkedin).split("/").length - 1
-                            : String(user.linkedin).split("/").length - 2
+                        String(selectedUser.user.linkedin).split("/")[
+                          String(selectedUser.user.linkedin).split("/").length -
+                            1 ===
+                          ""
+                            ? String(selectedUser.user.linkedin).split("/")
+                                .length - 1
+                            : String(selectedUser.user.linkedin).split("/")
+                                .length - 2
                         ]}
                     </p>
                   </div>
                   <Link
-                    to="/update"
+                    to="/update-selected-user"
                     className="btn btn-dark d-block mx-auto profile-btn text-center"
                   >
                     Update
@@ -129,7 +154,9 @@ const Profile = ({
               </div>
             </div>
             <div className="col-md-7">
-              {treasury && <Treasury personTreasury={treasury} />}
+              {selectedUser && (
+                <Treasury personTreasury={selectedUser.treasury} />
+              )}
             </div>
           </div>
         </Fragment>
@@ -143,4 +170,6 @@ const mapStateToProps = (state) => ({
   treasuryReducer: state.treasuryReducer,
 });
 
-export default withRouter(connect(mapStateToProps, { getTreasury })(Profile));
+export default withRouter(
+  connect(mapStateToProps, { getSelectedUser })(SelectedProfile)
+);

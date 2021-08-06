@@ -69,7 +69,9 @@ const AllUsers = ({
                   <th scope="col">Role</th>
                   <th scope="col">Programme</th>
                   <th scope="col">Profile</th>
-                  <th scope="col">Remove</th>
+                  {user.role.toLowerCase() === "executive" && (
+                    <th scope="col">Remove</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -94,16 +96,18 @@ const AllUsers = ({
                             </Link>
                           </td>
 
-                          <td>
-                            <button
-                              className="btn btn-danger"
-                              data-toggle="modal"
-                              data-target="#deleteConfirm"
-                              onClick={(e) => setRemove(u)}
-                            >
-                              Delete
-                            </button>
-                          </td>
+                          {user.role.toLowerCase() === "executive" && (
+                            <td>
+                              <button
+                                className="btn btn-danger"
+                                data-toggle="modal"
+                                data-target="#deleteConfirm"
+                                onClick={(e) => setRemove(u)}
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          )}
                         </tr>
                       ))
                     ) : (
@@ -122,23 +126,25 @@ const AllUsers = ({
                         <td>{u.programme}</td>
                         <td>
                           <Link
-                            to={`/profile/${u.id}`}
+                            to={`/selecteduser/${u.id}`}
                             className="btn btn-dark"
                           >
                             View
                           </Link>
                         </td>
 
-                        <td>
-                          <button
-                            className="btn btn-danger"
-                            data-toggle="modal"
-                            data-target="#deleteConfirm"
-                            onClick={(e) => setRemove(u)}
-                          >
-                            Delete
-                          </button>
-                        </td>
+                        {user.role.toLowerCase() === "executive" && (
+                          <td>
+                            <button
+                              className="btn btn-danger"
+                              data-toggle="modal"
+                              data-target="#deleteConfirm"
+                              onClick={(e) => setRemove(u)}
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        )}
                       </tr>
                     ))
                   ))}

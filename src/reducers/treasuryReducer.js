@@ -1,4 +1,4 @@
-import { SET_LOADING, GET_TREASURY } from "./types";
+import { SET_LOADING, GET_TREASURY, GET_SELECTED_USER_TREASURY } from "./types";
 
 const initialState = {
   treasury: null,
@@ -11,7 +11,13 @@ const treasuryReducer = (state = initialState, action) => {
     case GET_TREASURY:
       return {
         ...state,
-        treasury: action.payload,
+        treasury: action.value,
+        loading: false,
+      };
+    case GET_SELECTED_USER_TREASURY:
+      return {
+        ...state,
+        currentTreasury: action.value,
         loading: false,
       };
     case SET_LOADING:

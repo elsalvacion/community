@@ -266,7 +266,7 @@
           "loan_status": true
         }
       ],
-      "secret": 9380,
+      "secret": 8765,
       "id": 3
     }
   ],
@@ -282,6 +282,12 @@
       "role": "regular",
       "secret": 9380,
       "id": 6
+    },
+    {
+      "email": "treasurer@gmail.com",
+      "role": "treasurer",
+      "secret": 8765,
+      "id": 7
     }
   ],
   "users": [
@@ -302,6 +308,24 @@
       "secret": 3346,
       "role": "executive",
       "id": 1
+    },
+    {
+      "firstName": "Mr.",
+      "lastName": "Treasurer",
+      "gender": "male",
+      "programme": "Bsc. EEE",
+      "password": "123",
+      "confirm_password": "123",
+      "admitted": "2018",
+      "graduation": "2022",
+      "whatsapp": "46546546465",
+      "emergency": "546436648",
+      "facebook": "alieukeita",
+      "linkedin": "alieukeita",
+      "email": "treasurer@gmail.com",
+      "secret": 8765,
+      "role": "treasurer",
+      "id": 2
     }
   ]
 }

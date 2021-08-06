@@ -6,7 +6,12 @@ export const LOGIN_USER = "LOGIN_USER";
 
 export const GET_ALL_USERS = "GET_ALL_USERS";
 
+export const GET_SELECTED_USER = "GET_SELECTED_USER";
+
+export const GET_SELECTED_USER_TREASURY = "GET_SELECTED_USER_TREASURY";
+
 export const FILTER_USERS = "FILTER_USERS";
+
 export const DELETE_USER = "DELETE_USER";
 
 export const UPDATE_USER = "UPDATE_USER";

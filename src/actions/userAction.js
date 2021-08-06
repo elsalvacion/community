@@ -10,7 +10,9 @@ import {
   GET_ALL_USERS,
   FILTER_USERS,
   DELETE_USER,
+  GET_SELECTED_USER,
 } from "../reducers/types";
+import { getSelectedUserTreasury } from "./treasuryAction";
 
 const monthlyFields = {
   months: [
@@ -226,6 +228,7 @@ export const deleteUser = (u) => async (dispatch) => {
     },
   });
 };
+
 export const checkRegister = (user) => async (dispatch) => {
   const res = await axios.get("/secret-keys");
   const secret_keys = res.data;
@@ -274,14 +277,21 @@ export const registerUser = (user, id) => async (dispatch) => {
 
 export const updateProfile = (user) => async (dispatch) => {
   setLoading();
-  const updated = await axios.put(`/users/${user.id}`, user, {
+  await axios.put(`/users/${user.id}`, user, {
     "Content-Type": "application/json",
   });
-  dispatch({
-    type: UPDATE_USER,
-    value: updated.data,
-  });
-  sessionStorage.setItem("user", JSON.stringify(updated.data));
+
+  const loggedInUser = JSON.parse(sessionStorage.getItem("user"));
+
+  if (user.id === loggedInUser.id) {
+    dispatch({
+      type: UPDATE_USER,
+      value: user,
+    });
+
+    sessionStorage.setItem("user", JSON.stringify(user));
+  }
+
   return true;
 };
 
@@ -295,6 +305,27 @@ export const getUser = () => async (dispatch) => {
       value: user,
     });
   }
+};
+
+export const getSelectedUser = (id) => async (dispatch) => {
+  setLoading();
+  const user = await axios.get(`/users/${id}`);
+  const res = await axios.get(`/treasury`);
+  let treasury = res.data;
+  treasury = treasury.filter((data) => {
+    if (Number(data.secret) === user.data.secret) {
+      return data.months;
+    }
+    return null;
+  });
+
+  dispatch({
+    type: GET_SELECTED_USER,
+    value: {
+      user: user.data,
+      treasury: treasury[0].months,
+    },
+  });
 };
 
 export const loginUser = (user) => async (dispatch) => {

@@ -8,6 +8,7 @@ import {
   GET_ALL_USERS,
   FILTER_USERS,
   DELETE_USER,
+  GET_SELECTED_USER,
 } from "./types";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   isAuthenticated: false,
   allUsers: null,
   filtered: null,
+  selectedUser: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -44,6 +46,12 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         allUsers: action.value,
+        loading: false,
+      };
+    case GET_SELECTED_USER:
+      return {
+        ...state,
+        selectedUser: action.value,
         loading: false,
       };
     case FILTER_USERS:
