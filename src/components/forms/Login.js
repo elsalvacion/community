@@ -43,7 +43,9 @@ const AddUser = ({
     const getUsers = await axios.get("/users");
     const users = getUsers.data;
     let found = false,
-      current_user = false;
+      current_user = false,
+      pass_error = false
+      ;
     if (users.length > 0) {
       for (const key in users) {
         if (
@@ -53,12 +55,22 @@ const AddUser = ({
           found = true;
           current_user = users[key];
         }
+
+        if(usr.password !== users[key].password &&  usr.email === users[key].email){
+          pass_error = true
+        }
+
       }
 
       if (found) {
         return { found, current_user };
       } else {
-        setAlert({ type: "danger", msg: "Wrong Credentails" });
+        if(pass_error) {
+          setAlert({ type: "danger", msg: "Incorrect Password" });
+        }
+        else {
+          setAlert({ type: "danger", msg: "Wrong Credentials" });
+        }
         return { found, current_user };
       }
     } else {
@@ -84,6 +96,8 @@ const AddUser = ({
     <div className="container-fluid login py-3">
       <div className="row ">
         <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+        <div className="card cardStyling">
+  <div className="card-body">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h1 className="h1 text-center mb-2">Login</h1>
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
@@ -130,6 +144,8 @@ const AddUser = ({
               Login
             </button>
           </form>
+        </div>
+        </div>
         </div>
       </div>
     </div>

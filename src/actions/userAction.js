@@ -12,7 +12,6 @@ import {
   DELETE_USER,
   GET_SELECTED_USER,
 } from "../reducers/types";
-import { getSelectedUserTreasury } from "./treasuryAction";
 
 const monthlyFields = {
   months: [

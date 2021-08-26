@@ -68,6 +68,8 @@ const Register = ({ registerUser }) => {
     <div className="container-fluid register py-3">
       <div className="row ">
         <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+        <div className="card">
+  <div className="card-body cardStyling">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h2 className="h2 text-center">Register</h2>
 
@@ -287,6 +289,8 @@ const Register = ({ registerUser }) => {
               Register
             </button>
           </form>
+        </div>
+        </div>
         </div>
       </div>
     </div>

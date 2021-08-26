@@ -49,6 +49,8 @@ const AddUser = ({ authReducer: { user, isAuthenticated }, addUser }) => {
       <div className="container-fluid add-user py-3">
         <div className="row ">
           <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+          <div className="card cardStyling">
+            <div className="card-body">
             <form onSubmit={(e) => handleSubmit(e)}>
               <h2 className="h2 text-center">Add User</h2>
 
@@ -92,6 +94,8 @@ const AddUser = ({ authReducer: { user, isAuthenticated }, addUser }) => {
                 Add User
               </button>
             </form>
+          </div>
+          </div>
           </div>
         </div>
       </div>

@@ -67,6 +67,8 @@ const UpdateSelectedUser = ({
       <div className="container-fluid register py-3">
         <div className="row ">
           <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+          <div className="card cardStyling">
+  <div className="card-body">
             <form onSubmit={(e) => handleSubmit(e)}>
               <h2 className="h2 text-center">Update Profile Details</h2>
 
@@ -262,6 +264,8 @@ const UpdateSelectedUser = ({
                 Change
               </button>
             </form>
+          </div>
+          </div>
           </div>
         </div>
       </div>

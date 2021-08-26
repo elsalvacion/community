@@ -148,7 +148,8 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
               {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
               {pay && (
                 <Fragment>
-                  <table className="table">
+
+                  <table className="table table-bordered">
                     <thead>
                       <tr>
                         <th scope="col">Months</th>
@@ -186,6 +187,7 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
                       ))}
                     </tbody>
                   </table>
+   
                   <div className="row my-2">
                     <div className="col">
                       <label className="mr-sm-2" htmlFor="secret">
@@ -217,7 +219,10 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
                 </Fragment>
               )}
             </form>
+            
           ) : (
+            <div className="card cardStyling">
+            <div className="card-body">
             <form onSubmit={(e) => checkSecret(e)}>
               <h1 className="h1 text-center mb-3">Personal Secret</h1>
               {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
@@ -246,6 +251,8 @@ const MonthlyPayment = ({ authReducer: { user, isAuthenticated } }) => {
                 </div>
               </div>
             </form>
+            </div>
+            </div>
           )}
         </div>
       </div>

@@ -2,7 +2,6 @@ import axios from "axios";
 import {
   SET_LOADING,
   GET_TREASURY,
-  GET_SELECTED_USER_TREASURY,
 } from "../reducers/types";
 
 export const getTreasury = (secret) => async (dispatch) => {

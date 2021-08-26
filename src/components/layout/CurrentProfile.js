@@ -9,6 +9,8 @@ const CurrentProfile = ({
 }) => {
   const { id } = useParams();
   const [usr, setUsr] = useState(null);
+
+  // eslint-disable-next-line 
   const [treasury, setTreasury] = useState(null);
   useEffect(() => {
     getSingleUser();
@@ -22,16 +24,16 @@ const CurrentProfile = ({
     setUsr(userResponse.data);
   };
 
-  const getTreasury = async () => {
-    const treasuryResponse = await axios.get(`/treasury`);
+  // const getTreasury = async () => {
+  //   const treasuryResponse = await axios.get(`/treasury`);
 
-    const tr = treasuryResponse.data.filter((data) => {
-      if (Number(data.secret) === usr.secret) {
-        return data.months;
-      }
-      return null;
-    });
-  };
+  //   const tr = treasuryResponse.data.filter((data) => {
+  //     if (Number(data.secret) === usr.secret) {
+  //       return data.months;
+  //     }
+  //     return null;
+  //   });
+  // };
 
   if (loading) return <h2 className="text-center h2">Loading ...</h2>;
   if (user === null && isAuthenticated === false) {

@@ -15,7 +15,6 @@ import UpdateDetails from "./components/forms/UpdateDetails";
 import MonthlyPayment from "./components/treasury/MonthlyPayment";
 import LoanPayment from "./components/treasury/LoanPayment";
 import SideNav from "./components/layout/SideNav";
-import { useEffect } from "react";
 import AllUsers from "./components/auth/AllUsers";
 import CurrentProfile from "./components/layout/CurrentProfile";
 import SelectedProfile from "./components/layout/SelectedProfile";

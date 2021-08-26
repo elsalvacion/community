@@ -136,7 +136,8 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
             <Fragment>
               <h3 className="text-center h3 my-2">Loan</h3>
               {pay && (
-                <table className="table">
+
+                <table className="table table-bordered">
                   <thead>
                     <tr>
                       <th scope="col">Months</th>
@@ -166,6 +167,8 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
               )}
             </Fragment>
           ) : (
+            <div className="card cardStyling">
+            <div className="card-body">
             <form onSubmit={(e) => checkSecret(e)}>
               <h1 className="h1 text-center mb-3">Personal Secret</h1>
               {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
@@ -194,6 +197,8 @@ const LoanPayment = ({ authReducer: { user, isAuthenticated } }) => {
                 </div>
               </div>
             </form>
+            </div>
+            </div>
           )}
 
           {/* Modal */}

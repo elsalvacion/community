@@ -55,6 +55,8 @@ const ChangePass = ({ authReducer: { user }, changePassword }) => {
     <div className="container-fluid change-pass py-3">
       <div className="row ">
         <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+        <div className="card cardStyling">
+  <div className="card-body">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h1 className="h1 text-center mb-2">Change Password</h1>
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
@@ -97,6 +99,8 @@ const ChangePass = ({ authReducer: { user }, changePassword }) => {
               Login
             </button>
           </form>
+        </div>
+        </div>
         </div>
       </div>
     </div>

@@ -48,12 +48,9 @@
 /* Personal Styles */
 
 body {
-  background: #f5f5f5;
+  background: #f7f7f7;
 }
-.container-fluid,
-.container {
-  background: #f5f5f5 !important;
-}
+
 
 .btn-addPayment {
   background: #00796b;
@@ -222,4 +219,21 @@ button {
 .back {
   color: #00796b;
   font-size: 24px;
+}
+
+.cardStyling {
+  border: 1px solid #00796b;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  background: #f7f7f7;
+}
+table{
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+table, th, td {
+  border: 1px solid #00796b !important;
+}
+
+input, select {
+  border: 1px solid #00796b !important;
+
 }

@@ -49,6 +49,8 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
     <div className="container-fluid register py-3">
       <div className="row ">
         <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+        <div className="card cardStyling">
+  <div className="card-body">
           <form onSubmit={(e) => handleSubmit(e)}>
             <h1 className="h1 text-center mb-2">Register</h1>
             <p className="monospace my-1">
@@ -92,6 +94,8 @@ const RegisterCheck = ({ checkRegister, authReducer }) => {
               Next
             </button>
           </form>
+        </div>
+        </div>
         </div>
       </div>
     </div>

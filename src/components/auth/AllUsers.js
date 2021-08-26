@@ -62,7 +62,7 @@ const AllUsers = ({
               placeholder="Filter by name, programme or role"
             />
             {alert.type && <Alert alert={alert} clearAlert={clearAlert} />}
-            <table className="table table-hover">
+            <table className="table table-hover table-bordered">
               <thead className="thead-dark">
                 <tr>
                   <th scope="col">Name</th>
