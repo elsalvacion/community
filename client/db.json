@@ -1,0 +1,331 @@
+{
+  "treasury": [
+    {
+      "months": [
+        {
+          "month": "Jan",
+          "amount": 100,
+          "amount_status": true,
+          "loan": 30,
+          "loan_status": true
+        },
+        {
+          "month": "Feb",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 30,
+          "loan_status": true
+        },
+        {
+          "month": "Mar",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 250
+        },
+        {
+          "month": "Apr",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 250,
+          "loan_status": true
+        },
+        {
+          "month": "May",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 300,
+          "loan_status": false
+        },
+        {
+          "month": "June",
+          "amount": 100,
+          "amount_status": true,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "July",
+          "amount": 100,
+          "amount_status": true,
+          "loan": 250,
+          "loan_status": true
+        },
+        {
+          "month": "Aug",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": false
+        },
+        {
+          "month": "Sept",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Oct",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 250,
+          "loan_status": true
+        },
+        {
+          "month": "Nov",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 250,
+          "loan_status": true
+        },
+        {
+          "month": "Dec",
+          "amount": 100,
+          "amount_status": true,
+          "loan": 250,
+          "loan_status": true
+        }
+      ],
+      "secret": "3346",
+      "id": 1
+    },
+    {
+      "months": [
+        {
+          "month": "Jan",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Feb",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Mar",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Apr",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "May",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "June",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "July",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Aug",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Sept",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Oct",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Nov",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Dec",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        }
+      ],
+      "secret": 9380,
+      "id": 2
+    },
+    {
+      "months": [
+        {
+          "month": "Jan",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Feb",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Mar",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Apr",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "May",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "June",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "July",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Aug",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Sept",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Oct",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Nov",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        },
+        {
+          "month": "Dec",
+          "amount": 100,
+          "amount_status": false,
+          "loan": 0,
+          "loan_status": true
+        }
+      ],
+      "secret": 8765,
+      "id": 3
+    }
+  ],
+  "secret-keys": [
+    {
+      "email": "alieukeita@gmail.com",
+      "role": "regular",
+      "secret": 3346,
+      "id": 1
+    },
+    {
+      "email": "badjie@gmail.com",
+      "role": "regular",
+      "secret": 9380,
+      "id": 6
+    },
+    {
+      "email": "treasurer@gmail.com",
+      "role": "treasurer",
+      "secret": 8765,
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "firstName": "Alieu",
+      "lastName": "Keita",
+      "gender": "male",
+      "programme": "Bsc. EEE",
+      "password": "12345",
+      "confirm_password": "12345",
+      "admitted": "2018",
+      "graduation": "2020",
+      "whatsapp": "+8801858328387",
+      "emergency": "+2203480694",
+      "facebook": "https://www.facebook.com/alieu.keita.58",
+      "linkedin": "https://www.linkedin.com/in/alieukeita/",
+      "email": "alieukeita@gmail.com",
+      "secret": 3346,
+      "role": "executive",
+      "id": 1
+    },
+    {
+      "firstName": "Mr.",
+      "lastName": "Treasurer",
+      "gender": "male",
+      "programme": "Bsc. EEE",
+      "password": "123",
+      "confirm_password": "123",
+      "admitted": "2018",
+      "graduation": "2022",
+      "whatsapp": "46546546465",
+      "emergency": "546436648",
+      "facebook": "alieukeita",
+      "linkedin": "alieukeita",
+      "email": "treasurer@gmail.com",
+      "secret": 8765,
+      "role": "treasurer",
+      "id": 2
+    }
+  ]
+}

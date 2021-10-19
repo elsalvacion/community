@@ -1,0 +1,239 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Material Icons */
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+/* material icons  sizing */
+.material-icons.md-18 {
+  font-size: 18px;
+}
+.material-icons.md-24 {
+  font-size: 24px;
+}
+.material-icons.md-36 {
+  font-size: 36px;
+}
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+/* Personal Styles */
+
+body {
+  background: #f7f7f7;
+}
+
+
+.btn-addPayment {
+  background: #00796b;
+}
+.btn-addPayment:hover {
+  background: #009688;
+}
+.btn-addPayment:active {
+  background: #009688;
+}
+
+.profile {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.profile-btn {
+  width: 150px;
+  background: #00796b;
+}
+
+.profile-btn:hover {
+  background: #00796b;
+  border-color: #e8f5e9 !important;
+}
+
+.login-btn,
+.register-btn,
+.change-pass-btn,
+.add-user-btn {
+  background: #009688;
+}
+
+.login-btn:hover,
+.register-btn:hover,
+.change-pass-btn:hover,
+.add-user-btn:hover {
+  background: #00796b;
+  border-color: #e8f5e9 !important;
+}
+
+.login-btn:active,
+.register-btn:active,
+.change-pass-btn:active,
+.add-user-btn:active {
+  background: #00796b;
+  border-color: #e8f5e9 !important;
+}
+
+.drp {
+  background: #009688;
+}
+
+.drp a {
+  color: white;
+}
+
+.border-btm {
+  border-bottom: 2px solid #009688;
+}
+/* .nav-link:hover {
+  background: #00796b;
+  color: white;
+  border-color: #e8f5e9 !important;
+} */
+
+/* .nav-link:active {
+  background: #00796b;
+  color: white;
+  border-color: #e8f5e9 !important;
+} */
+
+.drp a:hover {
+  background: #00796b;
+  color: white;
+  border-color: #e8f5e9 !important;
+}
+
+.drp a.selected {
+  background: #00796b !important;
+  color: white;
+  border-color: #e8f5e9 !important;
+}
+
+.my-nav,
+button {
+  background: #009688;
+}
+
+/* side nav */
+
+.sidenav {
+  display: flex !important;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #015e54;
+  text-align: left;
+  padding: 10px;
+  transform: translateX(-200px);
+  transition: transform 0.2s ease;
+}
+
+.sidenav.show {
+  transform: translateX(0);
+}
+
+.sidenav .closeSidenav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.navbar-toggler:focus {
+  outline: 0;
+  box-shadow: 2px 2px 10px #00796b;
+}
+.sidenav .closeSidenav:hover {
+  background: #00796b;
+}
+.sidenav .closeSidenav:focus {
+  outline: 0;
+}
+.sidenav ul {
+  width: 100%;
+}
+.sidenav a {
+  color: white;
+  width: 100%;
+  font-size: 18px !important;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.sidenav a:hover {
+  font-size: 20px !important;
+}
+
+.sidenav a.selected {
+  color: #f4f4f4;
+}
+
+.unpaid {
+  background: salmon;
+}
+
+.paid {
+  background: #00897b;
+}
+
+.change-to-cursor {
+  cursor: pointer;
+}
+
+.back {
+  color: #00796b;
+  font-size: 24px;
+}
+
+.cardStyling {
+  border: 1px solid #00796b;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  background: #f7f7f7;
+}
+table{
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+table, th, td {
+  border: 1px solid #00796b !important;
+}
+
+input, select {
+  border: 1px solid #00796b !important;
+
+}
